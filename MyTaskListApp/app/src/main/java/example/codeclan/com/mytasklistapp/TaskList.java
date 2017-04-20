@@ -11,6 +11,10 @@ public class TaskList {
         list.add(new Task(1, "Make Bed", "Does what it says on the tin"));
     }
 
+    public void newTask(int priority, String name, String description){
+        list.add(new Task(priority, name, description));
+    }
+
     public ArrayList<Task> getList() {
         return new ArrayList<Task>(list);
     }

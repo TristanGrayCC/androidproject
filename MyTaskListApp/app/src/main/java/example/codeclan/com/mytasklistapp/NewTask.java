@@ -3,11 +3,18 @@ package example.codeclan.com.mytasklistapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 public class NewTask extends AppCompatActivity {
+
+    EditText priorityToSave;
+    EditText nameToSave;
+    EditText descriptionToSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,5 +48,11 @@ public class NewTask extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    public void onSaveTaskButtonClicked(View view) {
+        String intToSave = priorityToSave.getText().toString();
+        String stringOneToSave = nameToSave.getText().toString();
+        String stringTwoToSave = descriptionToSave.getText().toString();
     }
 }
