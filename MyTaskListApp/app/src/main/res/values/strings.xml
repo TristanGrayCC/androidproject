@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">My Task List</string>
     <string name="welcome">Welcome Home!</string>
+    <string name="question">What is your name?</string>
 </resources>
