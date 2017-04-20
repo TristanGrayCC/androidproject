@@ -8,10 +8,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class NewTask extends AppCompatActivity {
 
+    private Button saveButton;
     EditText priorityToSave;
     EditText nameToSave;
     EditText descriptionToSave;
@@ -20,6 +22,7 @@ public class NewTask extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
+        saveButton = (Button) findViewById(R.id.save_task_button);
     }
 
     @Override
@@ -54,5 +57,7 @@ public class NewTask extends AppCompatActivity {
         String intToSave = priorityToSave.getText().toString();
         String stringOneToSave = nameToSave.getText().toString();
         String stringTwoToSave = descriptionToSave.getText().toString();
+        Intent intent = new Intent(this, TaskListActivity.class);
+        startActivity(intent);
     }
 }
