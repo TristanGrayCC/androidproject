@@ -20,8 +20,17 @@ public class TaskListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_list);
 
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        String priority = extras.getString("prioritySaved");
+        int priority_int = Integer.parseInt(priority);
+        String name = extras.getString("nameSaved");
+        String description = extras.getString("descriptionSaved");
+        Task task = new Task (priority_int, name, description);
+
         TaskList taskList = new TaskList();
         ArrayList<Task> list = taskList.getList();
+        list.add(task);
 
         TaskListAdapter tasksAdapter = new TaskListAdapter(this, list);
 

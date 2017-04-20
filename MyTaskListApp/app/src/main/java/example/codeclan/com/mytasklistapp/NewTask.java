@@ -58,6 +58,9 @@ public class NewTask extends AppCompatActivity {
         String stringOneToSave = nameToSave.getText().toString();
         String stringTwoToSave = descriptionToSave.getText().toString();
         Intent intent = new Intent(this, TaskListActivity.class);
+        intent.putExtra("prioritySaved", intToSave);
+        intent.putExtra("nameSaved", stringOneToSave);
+        intent.putExtra("descriptionSaved", stringTwoToSave);
         startActivity(intent);
     }
 }
