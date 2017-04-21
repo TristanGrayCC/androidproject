@@ -23,6 +23,9 @@ public class NewTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
         saveButton = (Button) findViewById(R.id.save_task_button);
+        priorityToSave = (EditText) findViewById(R.id.priority_to_save);
+        nameToSave = (EditText) findViewById(R.id.name_to_save);
+        descriptionToSave = (EditText) findViewById(R.id.description_to_save);
     }
 
     @Override
@@ -57,10 +60,12 @@ public class NewTask extends AppCompatActivity {
         String intToSave = priorityToSave.getText().toString();
         String stringOneToSave = nameToSave.getText().toString();
         String stringTwoToSave = descriptionToSave.getText().toString();
+
         Intent intent = new Intent(this, TaskListActivity.class);
         intent.putExtra("prioritySaved", intToSave);
         intent.putExtra("nameSaved", stringOneToSave);
         intent.putExtra("descriptionSaved", stringTwoToSave);
+
         startActivity(intent);
     }
 }

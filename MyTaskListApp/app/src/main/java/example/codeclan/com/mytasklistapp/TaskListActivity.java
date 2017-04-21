@@ -21,11 +21,18 @@ public class TaskListActivity extends AppCompatActivity {
         setContentView(R.layout.task_list);
 
         Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-        String priority = extras.getString("prioritySaved");
+        Bundle form = intent.getExtras();
+        Log.d(getClass().toString(), "Create Bundle");
+
+
+        String priority = form.getString("prioritySaved");
+
+        Log.d(getClass().toString(),"Got string, prioritySaved");
+
+
         int priority_int = Integer.parseInt(priority);
-        String name = extras.getString("nameSaved");
-        String description = extras.getString("descriptionSaved");
+        String name = form.getString("nameSaved");
+        String description = form.getString("descriptionSaved");
         Task task = new Task (priority_int, name, description);
 
         TaskList taskList = new TaskList();
