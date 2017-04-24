@@ -71,9 +71,9 @@ public class DBHandler extends SQLiteOpenHelper {
         return task;
     }
 
-    // Getting All Shops
-    public List<Task> getAllShops() {
-        List<Task> taskList = new ArrayList<Task>();
+    // Getting All Tasks
+    public ArrayList<Task> getAllTasks() {
+        ArrayList<Task> taskList = new ArrayList<Task>();
     // Select All Query
         String selectQuery = "SELECT * FROM " + TASK_LIST;
         SQLiteDatabase db = this.getWritableDatabase();

@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import example.codeclan.com.mytasklistapp.database.DBHandler;
+
 public class NewTask extends AppCompatActivity {
 
     private Button saveButton;
@@ -58,8 +60,13 @@ public class NewTask extends AppCompatActivity {
 
     public void onSaveTaskButtonClicked(View view) {
         String intToSave = priorityToSave.getText().toString();
+        int intToSaveInt = Integer.parseInt(intToSave);
         String stringOneToSave = nameToSave.getText().toString();
         String stringTwoToSave = descriptionToSave.getText().toString();
+
+        Task task = new Task(intToSaveInt, stringOneToSave, stringTwoToSave);
+        DBHandler dbHandler = new DBHandler(this);
+        dbHandler.addTask(task);
 
         Intent intent = new Intent(this, TaskListActivity.class);
         intent.putExtra("prioritySaved", intToSave);

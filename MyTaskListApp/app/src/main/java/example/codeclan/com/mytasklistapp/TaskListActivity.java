@@ -1,6 +1,7 @@
 package example.codeclan.com.mytasklistapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,9 +10,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
+import example.codeclan.com.mytasklistapp.database.DBHandler;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskListActivity extends AppCompatActivity {
 
@@ -20,22 +22,10 @@ public class TaskListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_list);
 
-        TaskList taskList = new TaskList();
-        ArrayList<Task> list = taskList.getList();
+        DBHandler dbHandler = new DBHandler(this);
+        ArrayList<Task> lists = dbHandler.getAllTasks();
 
-        Intent intent = getIntent();
-        Bundle form = intent.getExtras();
-
-        if (form != null) {
-            String priority = form.getString("prioritySaved");
-            int priority_int = Integer.parseInt(priority);
-            String name = form.getString("nameSaved");
-            String description = form.getString("descriptionSaved");
-            Task task = new Task(priority_int, name, description);
-            list.add(task);
-        }
-
-        TaskListAdapter tasksAdapter = new TaskListAdapter(this, list);
+        TaskListAdapter tasksAdapter = new TaskListAdapter(this, lists);
 
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(tasksAdapter);
@@ -73,4 +63,5 @@ public class TaskListActivity extends AppCompatActivity {
 
         return true;
     }
+
 }
