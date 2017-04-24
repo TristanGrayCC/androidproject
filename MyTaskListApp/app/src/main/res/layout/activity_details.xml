@@ -22,13 +22,29 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/name"
+            android:id="@+id/name_details"
             android:textSize="18dp"/>
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/description"
+            android:id="@+id/description_details"
+            android:textSize="12dp"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/update"
+            android:text="UPDATE"
+            android:onClick="onUpdateButtonClicked"
+            android:textSize="12dp"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/delete"
+            android:text="DELETE"
+            android:onClick="onDeleteButtonClicked"
             android:textSize="12dp"/>
 
     </LinearLayout>

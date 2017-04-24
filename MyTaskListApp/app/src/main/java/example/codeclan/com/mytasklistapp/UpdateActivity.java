@@ -18,20 +18,22 @@ public class UpdateActivity extends AppCompatActivity {
     EditText priorityToSave;
     EditText nameToSave;
     EditText descriptionToSave;
-
-    Intent intent = getIntent();
-    int id = intent.getExtras().getInt("Task");
-    DBHandler dbHandler = new DBHandler(this);
-    Task task = dbHandler.getTask(id);
+    Task task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
+
         saveUpdateButton = (Button) findViewById(R.id.save_update_button);
         priorityToSave = (EditText) findViewById(R.id.priority_to_save);
         nameToSave = (EditText) findViewById(R.id.name_to_save);
         descriptionToSave = (EditText) findViewById(R.id.description_to_save);
+
+        Intent intent = getIntent();
+        int id = intent.getExtras().getInt("Task");
+        DBHandler dbHandler = new DBHandler(this);
+        task = dbHandler.getTask(id);
     }
 
     @Override

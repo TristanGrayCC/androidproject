@@ -30,7 +30,11 @@ public class TaskListActivity extends AppCompatActivity {
 
     public void getTask(View listItem){
         Task task = (Task) listItem.getTag();
-        Log.d("Task name: ", task.getName());
+        Intent intent = new Intent(this, DetailsActivity.class);
+        String id = Integer.toString(task.getID());
+        intent.putExtra("Task", id);
+
+        startActivity(intent);
     }
 
     @Override
@@ -58,27 +62,6 @@ public class TaskListActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
-        return true;
-    }
-
-    public boolean onDeleteButtonClicked(View listItem){
-        Task task = (Task) listItem.getTag();
-        DBHandler dbHandler = new DBHandler(this);
-        dbHandler.deleteTask(task);
-
-        Intent intent = new Intent(this, TaskListActivity.class);
-
-        startActivity(intent);
-        return true;
-    }
-
-    public boolean onUpdateButtonClicked(View listItem){
-        Task task = (Task) listItem.getTag();
-
-        Intent intent = new Intent(this, UpdateActivity.class);
-        intent.putExtra("Task", task.getID());
-
-        startActivity(intent);
         return true;
     }
 
