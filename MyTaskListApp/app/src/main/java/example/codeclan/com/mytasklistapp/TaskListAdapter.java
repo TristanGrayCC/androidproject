@@ -1,13 +1,17 @@
 package example.codeclan.com.mytasklistapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import example.codeclan.com.mytasklistapp.database.DBHandler;
 
 /**
  * Created by user on 19/04/2017.
@@ -34,6 +38,12 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         title.setText(currentTask.getDescription().toString());
 
         TextView score = (TextView) listItemView.findViewById(R.id.priority);
+        score.setText(currentTask.getPriority().toString());
+
+        Button update = (Button) listItemView.findViewById(R.id.update);
+        score.setText(currentTask.getPriority().toString());
+
+        Button delete = (Button) listItemView.findViewById(R.id.delete);
         score.setText(currentTask.getPriority().toString());
 
         listItemView.setTag(currentTask);

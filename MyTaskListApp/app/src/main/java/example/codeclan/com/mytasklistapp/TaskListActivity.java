@@ -1,7 +1,6 @@
 package example.codeclan.com.mytasklistapp;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,9 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import example.codeclan.com.mytasklistapp.database.DBHandler;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class TaskListActivity extends AppCompatActivity {
 
@@ -61,6 +58,27 @@ public class TaskListActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+        return true;
+    }
+
+    public boolean onDeleteButtonClicked(View listItem){
+        Task task = (Task) listItem.getTag();
+        DBHandler dbHandler = new DBHandler(this);
+        dbHandler.deleteTask(task);
+
+        Intent intent = new Intent(this, TaskListActivity.class);
+
+        startActivity(intent);
+        return true;
+    }
+
+    public boolean onUpdateButtonClicked(View listItem){
+        Task task = (Task) listItem.getTag();
+
+        Intent intent = new Intent(this, UpdateActivity.class);
+        intent.putExtra("Task", task.getID());
+
+        startActivity(intent);
         return true;
     }
 

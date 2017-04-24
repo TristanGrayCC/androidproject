@@ -3,28 +3,32 @@ package example.codeclan.com.mytasklistapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import example.codeclan.com.mytasklistapp.database.DBHandler;
 
-public class NewTask extends AppCompatActivity {
 
-    private Button saveButton;
+public class UpdateActivity extends AppCompatActivity {
+
+    private Button saveUpdateButton;
     EditText priorityToSave;
     EditText nameToSave;
     EditText descriptionToSave;
 
+    Intent intent = getIntent();
+    int id = intent.getExtras().getInt("Task");
+    DBHandler dbHandler = new DBHandler(this);
+    Task task = dbHandler.getTask(id);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_task);
-        saveButton = (Button) findViewById(R.id.save_task_button);
+        setContentView(R.layout.activity_update);
+        saveUpdateButton = (Button) findViewById(R.id.save_update_button);
         priorityToSave = (EditText) findViewById(R.id.priority_to_save);
         nameToSave = (EditText) findViewById(R.id.name_to_save);
         descriptionToSave = (EditText) findViewById(R.id.description_to_save);
@@ -58,7 +62,7 @@ public class NewTask extends AppCompatActivity {
         return true;
     }
 
-    public void onSaveTaskButtonClicked(View view) {
+    public void onSaveUpdateButtonClicked(View view) {
         String intToSave = priorityToSave.getText().toString();
         int intToSaveInt = Integer.parseInt(intToSave);
         String stringOneToSave = nameToSave.getText().toString();
@@ -66,7 +70,7 @@ public class NewTask extends AppCompatActivity {
 
         Task task = new Task(intToSaveInt, stringOneToSave, stringTwoToSave);
         DBHandler dbHandler = new DBHandler(this);
-        dbHandler.addTask(task);
+        dbHandler.updateTask(task);
 
         Intent intent = new Intent(this, TaskListActivity.class);
 
