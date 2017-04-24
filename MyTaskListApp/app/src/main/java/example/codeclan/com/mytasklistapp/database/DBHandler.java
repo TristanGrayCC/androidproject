@@ -27,6 +27,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_PRIORITY = "priority";
     private static final String KEY_NAME = "name";
     private static final String KEY_DESCRIPTION = "description";
+    private static final String KEY_COMPLETED = "completed";
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -34,7 +35,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + TASK_LIST + "("
         + KEY_ID + " INTEGER PRIMARY KEY," + KEY_PRIORITY + " INTEGER," + KEY_NAME + " TEXT,"
-        + KEY_DESCRIPTION + " TEXT" + ")";
+        + KEY_DESCRIPTION + " TEXT," + KEY_COMPLETED + " TEXT" + ")";
         db.execSQL(CREATE_TABLE);
     }
     @Override
@@ -52,6 +53,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_PRIORITY, task.getPriority());
         values.put(KEY_NAME, task.getName());
         values.put(KEY_DESCRIPTION, task.getDescription());
+        values.put(KEY_COMPLETED, task.getCompleted());
     // Inserting Row
         db.insert(TASK_LIST, null, values);
         db.close(); // Closing database connection
@@ -66,7 +68,7 @@ public class DBHandler extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
         Task task = new Task(Integer.parseInt(cursor.getString(0)),
-                cursor.getInt(1), cursor.getString(2), cursor.getString(3));
+                cursor.getInt(1), cursor.getString(2), cursor.getString(3), Boolean.parseBoolean(cursor.getString(4)));
     // return task
         return task;
     }
@@ -86,6 +88,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 task.setPriority(Integer.parseInt(cursor.getString(1)));
                 task.setName(cursor.getString(2));
                 task.setDescription(cursor.getString(3));
+                task.setCompleted(Boolean.parseBoolean(cursor.getString(4)));
     // Adding task to list
                 taskList.add(task);
             } while (cursor.moveToNext());
@@ -111,6 +114,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_PRIORITY, task.getPriority());
         values.put(KEY_NAME, task.getName());
         values.put(KEY_DESCRIPTION, task.getDescription());
+        values.put(KEY_COMPLETED, task.getDescription());
     // updating row
         return db.update(TASK_LIST, values, KEY_ID + " = ?",
                 new String[]{String.valueOf(task.getID())});

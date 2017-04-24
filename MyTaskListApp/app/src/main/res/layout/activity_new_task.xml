@@ -77,6 +77,17 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <EditText
+        android:id="@+id/completed_to_save_new"
+        android:hint="Completed"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/description"
+        android:layout_alignBottom="@+id/description"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <Button
         android:id="@+id/save_task_button"
         android:onClick="onSaveTaskButtonClicked"

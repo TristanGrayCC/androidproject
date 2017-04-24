@@ -6,21 +6,24 @@ public class Task {
     private int priority;
     private String name;
     private String description;
+    private Boolean completed;
 
     public Task() {
     }
 
-    public Task(Integer priority, String name, String description) {
+    public Task(Integer priority, String name, String description, Boolean completed) {
         this.priority = priority;
         this.name = name;
         this.description = description;
+        this.completed = completed;
     }
 
-    public Task(Integer id, Integer priority, String name, String description) {
+    public Task(Integer id, Integer priority, String name, String description, Boolean completed) {
         this.id = id;
         this.priority = priority;
         this.name = name;
         this.description = description;
+        this.completed = completed;
     }
 
     public Integer getID() {
@@ -39,6 +42,10 @@ public class Task {
         return description;
     }
 
+    public Boolean getCompleted() {
+        return completed;
+    }
+
     public void setID(int id) {
         this.id = id;
     }
@@ -53,5 +60,9 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setCompleted(Boolean completed) {
+        this.completed = completed;
     }
 }

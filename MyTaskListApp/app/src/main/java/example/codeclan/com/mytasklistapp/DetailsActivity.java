@@ -14,6 +14,7 @@ public class DetailsActivity extends AppCompatActivity {
     TextView ranking;
     TextView description;
     TextView name;
+    TextView completed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class DetailsActivity extends AppCompatActivity {
          ranking = (TextView) findViewById(R.id.priority);
          description = (TextView) findViewById(R.id.description_details);
          name = (TextView) findViewById(R.id.name_details);
+         completed = (TextView) findViewById(R.id.completed_details);
 
 
        Intent intent = getIntent();
@@ -36,6 +38,8 @@ public class DetailsActivity extends AppCompatActivity {
         name.setText(task.getName().toString());
 
         description.setText(task.getDescription().toString());
+
+        description.setText(task.getCompleted().toString());
     }
 
     public boolean onDeleteButtonClicked(View listItem){

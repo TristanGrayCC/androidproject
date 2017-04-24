@@ -8,11 +8,10 @@ public class TaskList {
 
     public TaskList() {
         list = new ArrayList<Task>();
-        list.add(new Task(1, "Make Bed", "Does what it says on the tin"));
     }
 
-    public void newTask(int priority, String name, String description){
-        list.add(new Task(priority, name, description));
+    public void newTask(int priority, String name, String description, Boolean completed){
+        list.add(new Task(priority, name, description, completed));
     }
 
     public ArrayList<Task> getList() {
