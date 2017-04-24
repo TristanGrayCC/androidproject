@@ -31,11 +31,11 @@ public class DetailsActivity extends AppCompatActivity {
         DBHandler dbHandler = new DBHandler(this);
         task = dbHandler.getTask(taskID);
 
-        ranking.setText(task.getName().toString());
+        ranking.setText(task.getPriority().toString());
 
-        name.setText(task.getDescription().toString());
+        name.setText(task.getName().toString());
 
-        description.setText(task.getPriority().toString());
+        description.setText(task.getDescription().toString());
     }
 
     public boolean onDeleteButtonClicked(View listItem){
