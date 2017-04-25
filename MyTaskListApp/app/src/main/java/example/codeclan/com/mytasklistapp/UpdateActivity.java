@@ -70,7 +70,9 @@ public class UpdateActivity extends AppCompatActivity {
         String stringOneToSave = nameToSave.getText().toString();
         String stringTwoToSave = descriptionToSave.getText().toString();
 
-        Task task = new Task(intToSaveInt, stringOneToSave, stringTwoToSave);
+        task.setPriority(intToSaveInt);
+        task.setName(stringOneToSave);
+        task.setDescription(stringTwoToSave);
         DBHandler dbHandler = new DBHandler(this);
         dbHandler.updateTask(task);
 
