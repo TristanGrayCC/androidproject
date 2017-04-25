@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,8 +68,17 @@ public class DBHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
+
+        String completed = cursor.getString(4);
+
+        boolean complete = false;
+
+        if(completed.equals("1")) {
+            complete = true;
+        }
+
         Task task = new Task(Integer.parseInt(cursor.getString(0)),
-                cursor.getInt(1), cursor.getString(2), cursor.getString(3), Boolean.parseBoolean(cursor.getString(4)));
+                cursor.getInt(1), cursor.getString(2), cursor.getString(3), complete);
     // return task
         return task;
     }
@@ -114,7 +124,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_PRIORITY, task.getPriority());
         values.put(KEY_NAME, task.getName());
         values.put(KEY_DESCRIPTION, task.getDescription());
-        values.put(KEY_COMPLETED, task.getDescription());
+        values.put(KEY_COMPLETED, task.getCompleted());
     // updating row
         return db.update(TASK_LIST, values, KEY_ID + " = ?",
                 new String[]{String.valueOf(task.getID())});

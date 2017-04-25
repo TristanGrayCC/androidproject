@@ -33,11 +33,9 @@
 
     </LinearLayout>
 
-    <TextView
+    <CheckBox android:id="@+id/checkbox_comp"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/completed"
-        android:textSize="12dp"/>
-
+        android:layout_height="100dp"
+        android:onClick="onCheckboxClicked"/>
 
 </LinearLayout>

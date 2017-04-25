@@ -8,11 +8,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import example.codeclan.com.mytasklistapp.database.DBHandler;
 import java.util.ArrayList;
 
 public class TaskListActivity extends AppCompatActivity {
+
+    CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class TaskListActivity extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(tasksAdapter);
+
     }
 
     public void getTask(View listItem){

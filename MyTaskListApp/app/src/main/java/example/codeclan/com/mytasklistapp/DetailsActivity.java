@@ -15,22 +15,30 @@ public class DetailsActivity extends AppCompatActivity {
     TextView ranking;
     TextView description;
     TextView name;
-    TextView completed;
+    CheckBox checkbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-         ranking = (TextView) findViewById(R.id.priority);
-         description = (TextView) findViewById(R.id.description_details);
-         name = (TextView) findViewById(R.id.name_details);
+        ranking = (TextView) findViewById(R.id.priority);
+        description = (TextView) findViewById(R.id.description_details);
+        name = (TextView) findViewById(R.id.name_details);
+        checkbox = (CheckBox) findViewById(R.id.checkbox_completed);
 
-       Intent intent = getIntent();
+        Intent intent = getIntent();
         String id = intent.getExtras().getString("Task");
-        int taskID = Integer.parseInt(id);
-        DBHandler dbHandler = new DBHandler(this);
+        final int taskID = Integer.parseInt(id);
+        final DBHandler dbHandler = new DBHandler(this);
         task = dbHandler.getTask(taskID);
+        Boolean isCompleted = task.getCompleted();
+
+        if (isCompleted) {
+            checkbox.setChecked(true);
+        } else {
+            checkbox.setChecked(false);
+        }
 
         ranking.setText(task.getPriority().toString());
 
@@ -38,7 +46,25 @@ public class DetailsActivity extends AppCompatActivity {
 
         description.setText(task.getDescription());
 
-        completed.setText(task.getCompleted().toString());
+//      click on checkbox
+        checkbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean checked = ((CheckBox) view).isChecked();
+
+                switch (view.getId()) {
+                    case R.id.checkbox_completed:
+                        if (checked){
+                            task.setCompleted(true);
+                            dbHandler.updateTask(task);
+                        }
+                        else {
+                            task.setCompleted(false);
+                            dbHandler.updateTask(task);
+                        }
+                }
+            }
+        });
     }
 
     public boolean onDeleteButtonClicked(View listItem){
@@ -58,23 +84,6 @@ public class DetailsActivity extends AppCompatActivity {
 
         startActivity(intent);
         return true;
-    }
-
-    public void onCheckboxClicked(View view) {
-        Task task2 = new Task(task.getID(), task.getPriority(), task.getName(), task.getDescription(), true);
-        Task task3 = new Task(task.getID(), task.getPriority(), task.getName(), task.getDescription(), true);
-        DBHandler dbHandler = new DBHandler(this);
-
-        boolean checked = ((CheckBox) view).isChecked();
-
-        switch (view.getId()) {
-            case R.id.checkbox_completed:
-                if (checked)
-                    dbHandler.updateTask(task2);
-                else
-                    dbHandler.updateTask(task3);
-                break;
-        }
     }
 
 }
