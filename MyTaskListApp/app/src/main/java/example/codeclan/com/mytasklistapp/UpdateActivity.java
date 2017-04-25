@@ -18,7 +18,6 @@ public class UpdateActivity extends AppCompatActivity {
     EditText priorityToSave;
     EditText nameToSave;
     EditText descriptionToSave;
-    EditText completedToSave;
     Task task;
 
     @Override
