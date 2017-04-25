@@ -11,11 +11,11 @@ public class Task {
     public Task() {
     }
 
-    public Task(Integer priority, String name, String description, Boolean completed) {
+    public Task(Integer priority, String name, String description) {
         this.priority = priority;
         this.name = name;
         this.description = description;
-        this.completed = completed;
+        this.completed = false;
     }
 
     public Task(Integer id, Integer priority, String name, String description, Boolean completed) {

@@ -35,7 +35,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + TASK_LIST + "("
         + KEY_ID + " INTEGER PRIMARY KEY," + KEY_PRIORITY + " INTEGER," + KEY_NAME + " TEXT,"
-        + KEY_DESCRIPTION + " TEXT," + KEY_COMPLETED + " TEXT" + ")";
+        + KEY_DESCRIPTION + " TEXT," + KEY_COMPLETED + " BOOLEAN" + ")";
         db.execSQL(CREATE_TABLE);
     }
     @Override
@@ -63,7 +63,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public Task getTask(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TASK_LIST, new String[] { KEY_ID, KEY_PRIORITY,
-                        KEY_NAME, KEY_DESCRIPTION }, KEY_ID + "=?",
+                        KEY_NAME, KEY_DESCRIPTION, KEY_COMPLETED }, KEY_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
@@ -88,7 +88,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 task.setPriority(Integer.parseInt(cursor.getString(1)));
                 task.setName(cursor.getString(2));
                 task.setDescription(cursor.getString(3));
-                task.setCompleted(Boolean.parseBoolean(cursor.getString(4)));
+                task.setCompleted(cursor.getInt(4)!=0);
     // Adding task to list
                 taskList.add(task);
             } while (cursor.moveToNext());

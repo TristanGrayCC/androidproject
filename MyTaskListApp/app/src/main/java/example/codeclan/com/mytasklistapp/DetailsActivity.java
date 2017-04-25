@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import example.codeclan.com.mytasklistapp.database.DBHandler;
@@ -24,8 +25,6 @@ public class DetailsActivity extends AppCompatActivity {
          ranking = (TextView) findViewById(R.id.priority);
          description = (TextView) findViewById(R.id.description_details);
          name = (TextView) findViewById(R.id.name_details);
-         completed = (TextView) findViewById(R.id.completed_details);
-
 
        Intent intent = getIntent();
         String id = intent.getExtras().getString("Task");
@@ -35,11 +34,11 @@ public class DetailsActivity extends AppCompatActivity {
 
         ranking.setText(task.getPriority().toString());
 
-        name.setText(task.getName().toString());
+        name.setText(task.getName());
 
-        description.setText(task.getDescription().toString());
+        description.setText(task.getDescription());
 
-        description.setText(task.getCompleted().toString());
+        completed.setText(task.getCompleted().toString());
     }
 
     public boolean onDeleteButtonClicked(View listItem){
@@ -59,6 +58,23 @@ public class DetailsActivity extends AppCompatActivity {
 
         startActivity(intent);
         return true;
+    }
+
+    public void onCheckboxClicked(View view) {
+        Task task2 = new Task(task.getID(), task.getPriority(), task.getName(), task.getDescription(), true);
+        Task task3 = new Task(task.getID(), task.getPriority(), task.getName(), task.getDescription(), true);
+        DBHandler dbHandler = new DBHandler(this);
+
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch (view.getId()) {
+            case R.id.checkbox_completed:
+                if (checked)
+                    dbHandler.updateTask(task2);
+                else
+                    dbHandler.updateTask(task3);
+                break;
+        }
     }
 
 }

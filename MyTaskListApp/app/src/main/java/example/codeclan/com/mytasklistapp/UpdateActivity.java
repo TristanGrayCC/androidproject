@@ -30,7 +30,6 @@ public class UpdateActivity extends AppCompatActivity {
         priorityToSave = (EditText) findViewById(R.id.priority_to_save);
         nameToSave = (EditText) findViewById(R.id.name_to_save);
         descriptionToSave = (EditText) findViewById(R.id.description_to_save);
-        completedToSave = (EditText) findViewById(R.id.completed_to_save);
 
         Intent intent = getIntent();
         int id = intent.getExtras().getInt("Task");
@@ -71,10 +70,8 @@ public class UpdateActivity extends AppCompatActivity {
         int intToSaveInt = Integer.parseInt(intToSave);
         String stringOneToSave = nameToSave.getText().toString();
         String stringTwoToSave = descriptionToSave.getText().toString();
-        String comp = completedToSave.getText().toString();
-        Boolean completed = Boolean.valueOf(comp);
 
-        Task task = new Task(intToSaveInt, stringOneToSave, stringTwoToSave, completed);
+        Task task = new Task(intToSaveInt, stringOneToSave, stringTwoToSave);
         DBHandler dbHandler = new DBHandler(this);
         dbHandler.updateTask(task);
 

@@ -33,4 +33,11 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/completed"
+        android:textSize="12dp"/>
+
+
 </LinearLayout>

@@ -40,11 +40,8 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         TextView score = (TextView) listItemView.findViewById(R.id.priority);
         score.setText(currentTask.getPriority().toString());
 
-        Button update = (Button) listItemView.findViewById(R.id.update);
-        score.setText(currentTask.getPriority().toString());
-
-        Button delete = (Button) listItemView.findViewById(R.id.delete);
-        score.setText(currentTask.getPriority().toString());
+        TextView completed = (TextView) listItemView.findViewById(R.id.completed);
+        completed.setText(currentTask.getCompleted().toString());
 
         listItemView.setTag(currentTask);
 
