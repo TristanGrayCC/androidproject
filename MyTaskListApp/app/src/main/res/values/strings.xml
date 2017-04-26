@@ -2,4 +2,10 @@
     <string name="app_name">My Task List</string>
     <string name="welcome">Welcome Home!</string>
     <string name="question">What is your name?</string>
+    <string-array name="priority_array">
+        <item>Urgent</item>
+        <item>Soon</item>
+        <item>Anytime</item>
+    </string-array>
+    <string name="date_selected"></string>
 </resources>

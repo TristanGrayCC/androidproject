@@ -1,11 +1,13 @@
 package example.codeclan.com.mytasklistapp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.CheckBox;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,13 +35,23 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         final Task currentTask = getItem(position);
 
         TextView ranking = (TextView) listItemView.findViewById(R.id.name);
-        ranking.setText(currentTask.getName().toString());
+        ranking.setText(currentTask.getName());
 
         TextView title = (TextView) listItemView.findViewById(R.id.description);
-        title.setText(currentTask.getDescription().toString());
+        title.setText(currentTask.getDescription());
 
-        TextView score = (TextView) listItemView.findViewById(R.id.priority);
-        score.setText(currentTask.getPriority().toString());
+        ImageView score = (ImageView) listItemView.findViewById(R.id.priority);
+        String priority = currentTask.getPriority();
+
+        if (priority == "Urgent") {
+            score.setBackgroundColor(Color.RED);
+        }
+        if (priority == "Soon") {
+            score.setBackgroundColor(Color.YELLOW);
+        }
+        if (priority == "Anytime") {
+            score.setBackgroundColor(Color.GREEN);
+        }
 
         Boolean isCompleted = currentTask.getCompleted();
         checkbox = (CheckBox) listItemView.findViewById(R.id.checkbox_comp);

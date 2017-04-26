@@ -10,8 +10,8 @@ public class TaskList {
         list = new ArrayList<Task>();
     }
 
-    public void newTask(int priority, String name, String description){
-        list.add(new Task(priority, name, description));
+    public void newTask(String priority, String name, String description, String date){
+        list.add(new Task(priority, name, description, date));
     }
 
     public ArrayList<Task> getList() {

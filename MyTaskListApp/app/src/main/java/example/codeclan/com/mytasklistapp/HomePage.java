@@ -40,7 +40,7 @@ public class HomePage extends AppCompatActivity {
             saveButton.setVisibility(View.INVISIBLE);
             textToSave.setVisibility(View.INVISIBLE);
             savedText.setVisibility(View.VISIBLE);
-            savedText.setText(returnedText);
+            savedText.setText("Welcome "+returnedText+"!");
             launchButton.setVisibility(View.VISIBLE);
             addButton.setVisibility(View.VISIBLE);
         }

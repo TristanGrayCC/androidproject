@@ -1,10 +1,12 @@
 package example.codeclan.com.mytasklistapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import example.codeclan.com.mytasklistapp.database.DBHandler;
@@ -12,7 +14,7 @@ import example.codeclan.com.mytasklistapp.database.DBHandler;
 public class DetailsActivity extends AppCompatActivity {
 
     Task task;
-    TextView ranking;
+    ImageView ranking;
     TextView description;
     TextView name;
     CheckBox checkbox;
@@ -22,7 +24,7 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        ranking = (TextView) findViewById(R.id.priority);
+        ranking = (ImageView) findViewById(R.id.priority);
         description = (TextView) findViewById(R.id.description_details);
         name = (TextView) findViewById(R.id.name_details);
         checkbox = (CheckBox) findViewById(R.id.checkbox_completed);
@@ -40,7 +42,17 @@ public class DetailsActivity extends AppCompatActivity {
             checkbox.setChecked(false);
         }
 
-        ranking.setText(task.getPriority().toString());
+        String priority = task.getPriority();
+
+        if (priority == "Urgent") {
+            ranking.setBackgroundColor(Color.RED);
+        }
+        if (priority == "Soon") {
+            ranking.setBackgroundColor(Color.YELLOW);
+        }
+        if (priority == "Anytime") {
+            ranking.setBackgroundColor(Color.GREEN);
+        }
 
         name.setText(task.getName());
 
