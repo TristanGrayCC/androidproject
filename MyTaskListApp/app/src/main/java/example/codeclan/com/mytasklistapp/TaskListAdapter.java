@@ -2,6 +2,7 @@ package example.codeclan.com.mytasklistapp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.widget.CheckBox;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +11,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import example.codeclan.com.mytasklistapp.database.DBHandler;
+
+import static android.R.attr.value;
 
 /**
  * Created by user on 19/04/2017.
@@ -40,22 +45,29 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         TextView title = (TextView) listItemView.findViewById(R.id.description);
         title.setText(currentTask.getDescription());
 
-        ImageView score = (ImageView) listItemView.findViewById(R.id.priority);
+        TextView date = (TextView) listItemView.findViewById(R.id.date);
+        int dateView = Integer.parseInt(currentTask.getDate());
+        SimpleDateFormat originalFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String newDate = originalFormat.format(dateView);
+        date.setText(newDate);
+
+        TextView score = (TextView) listItemView.findViewById(R.id.priority);
         String priority = currentTask.getPriority();
 
-        if (priority == "Urgent") {
+        if (priority.equals("Urgent")) {
             score.setBackgroundColor(Color.RED);
         }
-        if (priority == "Soon") {
+        if (priority.equals("Soon")) {
             score.setBackgroundColor(Color.YELLOW);
         }
-        if (priority == "Anytime") {
+        if (priority.equals("Anytime")) {
             score.setBackgroundColor(Color.GREEN);
         }
 
         Boolean isCompleted = currentTask.getCompleted();
         checkbox = (CheckBox) listItemView.findViewById(R.id.checkbox_comp);
         final DBHandler dbHandler = new DBHandler(parent.getContext());
+        Log.d("Database Date", dbHandler.getTask(currentTask.getID()).getDate());
 
         if (isCompleted) {
             checkbox.setChecked(true);

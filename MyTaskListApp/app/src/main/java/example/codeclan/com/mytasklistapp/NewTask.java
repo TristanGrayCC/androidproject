@@ -127,7 +127,7 @@ public class NewTask extends AppCompatActivity {
         String stringOneToSave = nameToSave.getText().toString();
         String stringTwoToSave = descriptionToSave.getText().toString();
         String dateToSave = Integer.toString(year) + Integer.toString(month) + Integer.toString(day);
-
+        Log.d("Date4", dateToSave);
         Task task = new Task(priToSave, stringOneToSave, stringTwoToSave, dateToSave);
         DBHandler dbHandler = new DBHandler(this);
         dbHandler.addTask(task);
