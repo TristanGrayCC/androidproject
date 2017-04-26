@@ -3,9 +3,9 @@
     <string name="welcome">Welcome Home!</string>
     <string name="question">What is your name?</string>
     <string-array name="priority_array">
-        <item>Urgent</item>
-        <item>Soon</item>
         <item>Anytime</item>
+        <item>Soon</item>
+        <item>Urgent</item>
     </string-array>
     <string name="date_selected"></string>
 </resources>
