@@ -82,7 +82,7 @@ public class DetailsActivity extends AppCompatActivity {
         });
     }
 
-    public boolean onDeleteButtonClicked(View listItem){
+    public boolean onDeleteButtonClicked(View view){
         DBHandler dbHandler = new DBHandler(this);
         dbHandler.deleteTask(task);
 
@@ -92,7 +92,7 @@ public class DetailsActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean onUpdateButtonClicked(View listItem){
+    public boolean onUpdateButtonClicked(View view){
 
         Intent intent = new Intent(this, UpdateActivity.class);
         intent.putExtra("Task", task.getID());
