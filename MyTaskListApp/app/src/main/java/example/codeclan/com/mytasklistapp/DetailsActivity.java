@@ -17,6 +17,7 @@ public class DetailsActivity extends AppCompatActivity {
     ImageView ranking;
     TextView description;
     TextView name;
+    TextView date;
     CheckBox checkbox;
 
     @Override
@@ -27,6 +28,7 @@ public class DetailsActivity extends AppCompatActivity {
         ranking = (ImageView) findViewById(R.id.priority);
         description = (TextView) findViewById(R.id.description_details);
         name = (TextView) findViewById(R.id.name_details);
+        date = (TextView) findViewById(R.id.date_details);
         checkbox = (CheckBox) findViewById(R.id.checkbox_completed);
 
         Intent intent = getIntent();
@@ -57,6 +59,7 @@ public class DetailsActivity extends AppCompatActivity {
         name.setText(task.getName());
 
         description.setText(task.getDescription());
+        date.setText(task.getDate());
 
 //      click on checkbox
         checkbox.setOnClickListener(new View.OnClickListener() {
