@@ -100,8 +100,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 task.setPriority(cursor.getString(1));
                 task.setName(cursor.getString(2));
                 task.setDescription(cursor.getString(3));
-                task.setCompleted(cursor.getInt(4)!=0);
-                task.setDate(cursor.getString(5));
+                task.setCompleted(cursor.getInt(5)!=0);
+                task.setDate(cursor.getString(4));
     // Adding task to list
                 taskList.add(task);
             } while (cursor.moveToNext());

@@ -46,10 +46,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         title.setText(currentTask.getDescription());
 
         TextView date = (TextView) listItemView.findViewById(R.id.date);
-        int dateView = Integer.parseInt(currentTask.getDate());
-        SimpleDateFormat originalFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String newDate = originalFormat.format(dateView);
-        date.setText(newDate);
+        date.setText(currentTask.getDate());
 
         TextView score = (TextView) listItemView.findViewById(R.id.priority);
         String priority = currentTask.getPriority();
@@ -67,7 +64,6 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         Boolean isCompleted = currentTask.getCompleted();
         checkbox = (CheckBox) listItemView.findViewById(R.id.checkbox_comp);
         final DBHandler dbHandler = new DBHandler(parent.getContext());
-        Log.d("Database Date", dbHandler.getTask(currentTask.getID()).getDate());
 
         if (isCompleted) {
             checkbox.setChecked(true);

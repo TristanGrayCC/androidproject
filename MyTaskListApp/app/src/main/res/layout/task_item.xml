@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:onClick="getTask">
+    android:onClick="getTask"
+    android:baselineAligned="false">
+
 
     <TextView
         android:id="@+id/priority"
         android:layout_width="60dp"
-        android:layout_height="164dp"
+        android:layout_height="120dp"
         android:textSize="30dp"
         android:textAlignment="center" />
 
@@ -16,7 +18,10 @@
         android:layout_width="241dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="0.39">
+        android:layout_weight="0.39"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
 
         <TextView
             android:layout_width="match_parent"
@@ -41,6 +46,9 @@
     <CheckBox android:id="@+id/checkbox_comp"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:onClick="onCheckboxClicked" />
+        android:onClick="onCheckboxClicked"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
-</LinearLayout>
+</RelativeLayout>

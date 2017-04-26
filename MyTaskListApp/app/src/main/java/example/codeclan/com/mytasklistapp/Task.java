@@ -49,7 +49,7 @@ public class Task {
         return completed;
     }
 
-    public String getDate() {return date; }
+    public String getDate() { return date; }
 
     public void setID(int id) {
         this.id = id;

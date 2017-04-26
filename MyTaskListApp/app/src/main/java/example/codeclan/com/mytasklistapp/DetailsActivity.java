@@ -44,13 +44,13 @@ public class DetailsActivity extends AppCompatActivity {
 
         String priority = task.getPriority();
 
-        if (priority == "Urgent") {
+        if (priority.equals("Urgent")) {
             ranking.setBackgroundColor(Color.RED);
         }
-        if (priority == "Soon") {
+        if (priority.equals("Soon")) {
             ranking.setBackgroundColor(Color.YELLOW);
         }
-        if (priority == "Anytime") {
+        if (priority.equals("Anytime")) {
             ranking.setBackgroundColor(Color.GREEN);
         }
 
