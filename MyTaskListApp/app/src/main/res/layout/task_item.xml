@@ -16,7 +16,6 @@
         android:textAlignment="center" />
 
     <CheckBox android:id="@+id/checkbox_comp"
-        android:button="@drawable/checkbox"
         android:layout_width="50dp"
         android:layout_height="100dp"
         android:onClick="onCheckboxClicked"

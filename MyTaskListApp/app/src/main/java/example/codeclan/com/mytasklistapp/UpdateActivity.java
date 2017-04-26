@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +23,7 @@ import example.codeclan.com.mytasklistapp.database.DBHandler;
 
 public class UpdateActivity extends AppCompatActivity {
 
-    private Button saveUpdateButton;
+    private ImageButton saveUpdateButton;
     EditText nameToSave;
     EditText descriptionToSave;
     Task task;
@@ -31,13 +32,14 @@ public class UpdateActivity extends AppCompatActivity {
     private Calendar calendar;
     private TextView dateView;
     private int year, month, day;
+    private String dateToSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        saveUpdateButton = (Button) findViewById(R.id.save_update_button);
+        saveUpdateButton = (ImageButton) findViewById(R.id.save_update_button);
         priorityToSave = (Spinner) findViewById(R.id.priority_to_save);
         nameToSave = (EditText) findViewById(R.id.name_to_save);
         descriptionToSave = (EditText) findViewById(R.id.description_to_save);
@@ -46,10 +48,10 @@ public class UpdateActivity extends AppCompatActivity {
         int id = intent.getExtras().getInt("Task");
         DBHandler dbHandler = new DBHandler(this);
         task = dbHandler.getTask(id);
-        nameToSave.setHint(task.getName());
-        descriptionToSave.setHint(task.getDescription());
+        nameToSave.setText(task.getName());
+        descriptionToSave.setText(task.getDescription());
+        dateToSave = task.getDate();
 
-        dateView = (TextView) findViewById(R.id.textView3);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
 
@@ -117,8 +119,7 @@ public class UpdateActivity extends AppCompatActivity {
             };
 
     private void showDate(int year, int month, int day) {
-        dateView.setText(new StringBuilder().append(day).append("/")
-                .append(month).append("/").append(year));
+        String dateView = Integer.toString(year) + Integer.toString(month) + Integer.toString(day);
     }
 
     public void onSaveUpdateButtonClicked(View view) {

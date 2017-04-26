@@ -8,6 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="example.codeclan.com.mytasklistapp.UpdateActivity">
 
     <TextView
@@ -22,57 +24,16 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-        android:id="@+id/save_update_button"
-        android:onClick="onSaveUpdateButtonClicked"
-        android:text="Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
     <EditText
-        android:id="@+id/name_to_save"
-        android:hint="Enter Name"
-        android:textSize="25sp"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/name"
-        android:layout_alignBottom="@+id/name"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:id="@+id/date"
-        android:textSize="25sp"
-        android:gravity="center_horizontal"
+        android:id="@+id/description_to_save"
+        android:hint="Enter Description"
+        android:textSize="12sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date: "
-        android:layout_marginTop="34dp"
-        android:layout_below="@+id/description_to_save"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:id="@+id/priority"
-        android:textSize="25sp"
-        android:gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Priority: "
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Spinner
-        android:id="@+id/priority_to_save"
-        android:entries="@array/priority_array"
-        android:textSize="50sp"
-        android:hint="Enter Priority"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/name"
+        android:layout_alignBaseline="@+id/description"
+        android:layout_alignBottom="@+id/description"
+        android:layout_alignLeft="@+id/name_to_save"
+        android:layout_alignStart="@+id/name_to_save"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -83,21 +44,55 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name: "
+        android:layout_marginTop="46dp"
         android:layout_below="@+id/priority"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="31dp" />
+        android:layout_alignParentStart="true" />
 
-    <EditText
-        android:id="@+id/description_to_save"
-        android:hint="Enter Description"
+    <TextView
+        android:id="@+id/date"
         android:textSize="25sp"
+        android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/description"
-        android:layout_alignBottom="@+id/description"
-        android:layout_alignLeft="@+id/name_to_save"
-        android:layout_alignStart="@+id/name_to_save" />
+        android:text="Date: "
+        android:layout_marginTop="95dp"
+        android:layout_below="@+id/description_to_save"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:id="@+id/priority_to_save"
+        android:entries="@array/priority_array"
+        android:textSize="25sp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/priority"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:id="@+id/name_to_save"
+        android:hint="Enter Name"
+        android:textSize="12sp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/name"
+        android:layout_alignBottom="@+id/name"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/priority"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Priority: "
+        android:layout_marginTop="102dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/button1"
@@ -105,19 +100,20 @@
         android:layout_height="wrap_content"
         android:onClick="setDate"
         android:text="Date"
-        android:layout_alignBaseline="@+id/date"
         android:layout_alignBottom="@+id/date"
         android:layout_alignLeft="@+id/description_to_save"
-        android:layout_alignStart="@+id/description_to_save" />
+        android:layout_alignStart="@+id/description_to_save"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="55dp" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="@string/date_selected"
-        android:layout_alignTop="@+id/button1"
-        android:layout_alignRight="@+id/description_to_save"
-        android:layout_alignEnd="@+id/description_to_save"
-        android:layout_alignBottom="@+id/button1" />
+    <ImageButton
+        android:id="@+id/save_update_button"
+        android:onClick="onSaveUpdateButtonClicked"
+        android:background="@drawable/update"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
