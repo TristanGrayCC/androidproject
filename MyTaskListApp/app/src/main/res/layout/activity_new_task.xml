@@ -25,17 +25,14 @@
         android:id="@+id/textView4"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="@string/date_selected"
-        android:layout_alignTop="@+id/button1"
+        android:textColor="#FFFFFF"
         android:layout_alignRight="@+id/description_to_save"
-        android:layout_alignEnd="@+id/description_to_save"
-        android:layout_alignBottom="@+id/button1" />
+        android:layout_alignEnd="@+id/description_to_save" />
 
     <ImageButton
         android:background="@drawable/update"
         android:id="@+id/save_task_button"
         android:onClick="onSaveTaskButtonClicked"
-        android:text="Save"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_alignParentTop="true"

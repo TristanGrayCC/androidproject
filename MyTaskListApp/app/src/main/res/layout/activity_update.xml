@@ -120,7 +120,7 @@
         android:id="@+id/textView3"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="@string/date_selected"
+        android:textColor="#FFFFFF"
         android:layout_alignTop="@+id/button1"
         android:layout_alignRight="@+id/description_to_save"
         android:layout_alignEnd="@+id/description_to_save"
