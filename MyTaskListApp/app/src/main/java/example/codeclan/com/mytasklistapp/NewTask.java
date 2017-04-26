@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ import example.codeclan.com.mytasklistapp.database.DBHandler;
 
 public class NewTask extends AppCompatActivity {
 
-    private Button saveButton;
+    private ImageButton saveButton;
     private EditText nameToSave;
     private EditText descriptionToSave;
     private EditText completedToSave;
@@ -40,7 +41,7 @@ public class NewTask extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
-        saveButton = (Button) findViewById(R.id.save_task_button);
+        saveButton = (ImageButton) findViewById(R.id.save_task_button);
         priorityToSave = (Spinner) findViewById(R.id.priority_to_save);
         nameToSave = (EditText) findViewById(R.id.name_to_save);
         descriptionToSave = (EditText) findViewById(R.id.description_to_save);
