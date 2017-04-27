@@ -69,7 +69,7 @@
                 android:id="@+id/name_details"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/priority"
                 android:layout_toEndOf="@+id/priority" />
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/date_details"
                 android:layout_marginLeft="10dp"
-                android:textSize="12dp"
+                android:textSize="13sp"
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/priority"
                 android:layout_toEndOf="@+id/priority" />
@@ -89,9 +89,18 @@
             android:layout_width="111dp"
             android:layout_height="fill_parent"
             android:id="@+id/description_details"
-            android:textSize="12dp"
+            android:textSize="13sp"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/box1" />
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:background="@drawable/goback_icon"
+            android:onClick="onBackButtonClicked"
+            android:layout_width="43dp"
+            android:layout_height="41dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 

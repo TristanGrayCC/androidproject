@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class DetailsActivity extends AppCompatActivity {
     TextView name;
     TextView date;
     CheckBox checkbox;
+    ImageButton backbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class DetailsActivity extends AppCompatActivity {
         name = (TextView) findViewById(R.id.name_details);
         date = (TextView) findViewById(R.id.date_details);
         checkbox = (CheckBox) findViewById(R.id.checkbox_completed);
+        backbutton = (ImageButton) findViewById(R.id.back_button);
 
         Intent intent = getIntent();
         String id = intent.getExtras().getString("Task");
@@ -46,14 +49,17 @@ public class DetailsActivity extends AppCompatActivity {
 
         String priority = task.getPriority();
 
-        if (priority.equals("Urgent")) {
+        if (priority.equals("Urgent") && !task.getCompleted()) {
             ranking.setBackgroundColor(Color.RED);
         }
-        if (priority.equals("Soon")) {
+        if (priority.equals("Soon") && !task.getCompleted()) {
             ranking.setBackgroundColor(Color.YELLOW);
         }
-        if (priority.equals("Anytime")) {
+        if (priority.equals("Anytime") && !task.getCompleted()) {
             ranking.setBackgroundColor(Color.GREEN);
+        }
+        if (task.getCompleted()){
+            ranking.setBackgroundColor(Color.WHITE);
         }
 
         name.setText(task.getName());
@@ -97,6 +103,13 @@ public class DetailsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, UpdateActivity.class);
         intent.putExtra("Task", task.getID());
 
+        startActivity(intent);
+        return true;
+    }
+
+    public boolean onBackButtonClicked(View view){
+
+        Intent intent = new Intent(this, TaskListActivity.class);
         startActivity(intent);
         return true;
     }

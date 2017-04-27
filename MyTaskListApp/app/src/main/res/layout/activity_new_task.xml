@@ -41,7 +41,7 @@
 
     <TextView
         android:id="@+id/priority"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
     <EditText
         android:id="@+id/description_to_save"
         android:hint="Enter Description"
-        android:textSize="12dp"
+        android:textSize="13sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/description"
@@ -72,7 +72,7 @@
 
     <TextView
         android:id="@+id/date"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
     <EditText
         android:id="@+id/name_to_save"
         android:hint="Enter Name"
-        android:textSize="12dp"
+        android:textSize="13sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/name"
@@ -95,7 +95,7 @@
 
     <TextView
         android:id="@+id/name"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
 
     <TextView
         android:id="@+id/description"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

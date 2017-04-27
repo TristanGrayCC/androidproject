@@ -43,22 +43,36 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         ranking.setText(currentTask.getName());
 
         TextView title = (TextView) listItemView.findViewById(R.id.description);
-        title.setText(currentTask.getDescription());
+        String[] parts = currentTask.getDescription().split(" ");
+        if (parts.length < 10) {
+            title.setText(currentTask.getDescription());
+        }
+        if (parts.length > 9) {
+            String shortDesc = "";
+            for (int str = 0; str < 9; str++) {
+                shortDesc += parts[str] + " ";
+                String shortDesc2 = shortDesc + "...";
+                title.setText(shortDesc2);
+            }
+        }
 
         TextView date = (TextView) listItemView.findViewById(R.id.date);
         date.setText(currentTask.getDate());
 
-        TextView score = (TextView) listItemView.findViewById(R.id.priority);
-        String priority = currentTask.getPriority();
+        final TextView score = (TextView) listItemView.findViewById(R.id.priority);
+        final String priority = currentTask.getPriority();
 
-        if (priority.equals("Urgent")) {
+        if (priority.equals("Urgent") && !currentTask.getCompleted()) {
             score.setBackgroundColor(Color.RED);
         }
-        if (priority.equals("Soon")) {
+        if (priority.equals("Soon") && !currentTask.getCompleted()) {
             score.setBackgroundColor(Color.YELLOW);
         }
-        if (priority.equals("Anytime")) {
+        if (priority.equals("Anytime") && !currentTask.getCompleted()) {
             score.setBackgroundColor(Color.GREEN);
+        }
+        if (currentTask.getCompleted()){
+            score.setBackgroundColor(Color.WHITE);
         }
 
         Boolean isCompleted = currentTask.getCompleted();
@@ -81,8 +95,20 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
                         if (checked){
                             currentTask.setCompleted(true);
                             dbHandler.updateTask(currentTask);
+                            score.setBackgroundColor(Color.WHITE);
                         }
                         else {
+
+                            if (priority.equals("Urgent")) {
+                                score.setBackgroundColor(Color.RED);
+                            }
+                            if (priority.equals("Soon")) {
+                                score.setBackgroundColor(Color.YELLOW);
+                            }
+                            if (priority.equals("Anytime")) {
+                                score.setBackgroundColor(Color.GREEN);
+                            }
+
                             currentTask.setCompleted(false);
                             dbHandler.updateTask(currentTask);
                         }
@@ -93,6 +119,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         listItemView.setTag(currentTask);
 
         return listItemView;
+
     }
 
 }

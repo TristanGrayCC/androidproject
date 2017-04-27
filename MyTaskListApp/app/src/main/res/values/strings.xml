@@ -8,4 +8,6 @@
         <item>Urgent</item>
     </string-array>
     <string name="date_selected"></string>
+    <string name="min_font_size">13sp</string>
+    <string name="med_font_size">20sp</string>
 </resources>

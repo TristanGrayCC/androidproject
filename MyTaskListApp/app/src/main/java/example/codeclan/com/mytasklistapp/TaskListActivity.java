@@ -29,16 +29,41 @@ public class TaskListActivity extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(tasksAdapter);
+        CheckBox checkbox = (CheckBox) findViewById(R.id.checkbox_comp);
 
     }
 
     public void getTask(View listItem){
-        Task task = (Task) listItem.getTag();
+        View parentItem = (View) listItem.getParent();
+        Task task = (Task) parentItem.getTag();
         Intent intent = new Intent(this, DetailsActivity.class);
         String id = Integer.toString(task.getID());
         intent.putExtra("Task", id);
 
         startActivity(intent);
+    }
+
+    public void changeUrgency(View listItem){
+        View parentItem = (View) listItem.getParent();
+        Task task = (Task) parentItem.getTag();
+        String oldPriority = task.getPriority();
+        String newPriority = "";
+        if (oldPriority.equals("Urgent")) {
+            newPriority = "Soon";
+        }
+        if (oldPriority.equals("Soon")) {
+            newPriority = "Anytime";
+        }
+        if (oldPriority.equals("Anytime")) {
+            newPriority = "Urgent";
+        }
+
+        task.setPriority(newPriority);
+        DBHandler dbHandler = new DBHandler(this);
+        dbHandler.updateTask(task);
+
+        finish();
+        startActivity(getIntent());
     }
 
     @Override
