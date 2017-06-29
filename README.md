@@ -12,3 +12,4 @@ This functional application remains in use and provides basic note-taking functi
 
 ### To Run Follow
 Install app to android device or run through Android Studio.
+Built using Java version 1.8.0_121
